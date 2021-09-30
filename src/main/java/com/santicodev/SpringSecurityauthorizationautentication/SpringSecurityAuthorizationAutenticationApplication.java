@@ -30,7 +30,7 @@ public class SpringSecurityAuthorizationAutenticationApplication {
 			userService.saveRole(new Role(null, "ROLE_USER"));
 			userService.saveRole(new Role(null, "ROLE_MANAGER"));
 			userService.saveRole(new Role(null, "ROLE_ADMIN"));
-			userService.saveRole(new Role(null, "ROLE_SPER_ADMIN"));
+			userService.saveRole(new Role(null, "ROLE_SUPER_ADMIN"));
 
 			userService.saveUser(new User(null, "Jhon Travolta", "jhon", "1234", new ArrayList<>()));
 			userService.saveUser(new User(null, "Will Smith", "will", "1234", new ArrayList<>()));
