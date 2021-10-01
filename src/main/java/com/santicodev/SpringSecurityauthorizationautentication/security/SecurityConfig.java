@@ -1,6 +1,7 @@
 package com.santicodev.SpringSecurityauthorizationautentication.security;
 
 import com.santicodev.SpringSecurityauthorizationautentication.security.filter.CustomAuthenticationFilter;
+import com.santicodev.SpringSecurityauthorizationautentication.security.filter.CustomAuthorizationFilter;
 import lombok.RequiredArgsConstructor;
 import org.aspectj.weaver.BCException;
 import org.springframework.context.annotation.Bean;
@@ -13,6 +14,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import static org.springframework.http.HttpMethod.GET;
 import static org.springframework.http.HttpMethod.POST;
@@ -45,6 +47,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().anyRequest().authenticated();
 
         http.addFilter(customAuthenticationFilter);
+        http.addFilterBefore(new CustomAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
     }
 
     @Bean
